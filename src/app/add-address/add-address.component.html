@@ -1,0 +1,97 @@
+        
+        
+
+<div class="col-md-6">  
+  <h2 class="text-center">Add Address</h2>  
+  <form  novalidate class="form">  
+
+
+    <div class="form-group" [class.has-error]="name.invalid && name.touched">
+      <label for="name" class="control-label">Name</label>
+      
+      <input id="name"  required type="text" class="form-control" name="name"
+             [(ngModel)]="address.name" #name="ngModel">
+      <span class="help-block" *ngIf="name.invalid && name.touched">
+        Name is required
+      </span>
+    </div> 
+  
+    <div class="form-group" [class.has-error]="street.invalid && street.touched">
+      <label for="street" class="control-label">Street</label>
+      
+      <input id="street" required type="text" class="form-control" name="street"
+             [(ngModel)]="address.street" #street="ngModel">
+      <span class="help-block" *ngIf="street.invalid && street.touched">
+        Street is required
+      </span>
+    </div> 
+
+
+    <div class="form-group" [class.has-error]="city.invalid && city.touched">
+      <label for="city" class="control-label">City</label>
+    
+      <input id="city" required type="text" class="form-control" name="city"
+             [(ngModel)]="address.city" #city="ngModel">
+      <span class="help-block" *ngIf="city.invalid && city.touched">
+        City is required
+      </span>
+    </div> 
+
+
+    <div class="form-group" [class.has-error]="zip.invalid && zip.touched">
+      <label for="zip" class="control-label">Zip</label>
+      
+      <input id="zip" required type="text" class="form-control" name="zip"
+             [(ngModel)]="address.zip" #zip="ngModel">
+      <span class="help-block" *ngIf="zip.invalid && zip.touched">
+        Zip is required
+      </span>
+    </div> 
+
+    <button class="btn btn-success" (click)="onSubmit()">Save</button>  
+    <!-- <button class="btn btn-success" [disabled]='addForm.invalid' *ngIf="!btnvisibility" (click)="onUpdate()">Update</button>  
+   -->
+    
+  </form>  
+</div>  
+<p>{{address.name }}{{address.city}}</p>
+
+
+<form>
+<div class="col-md-12">  
+  <h2> Address List</h2>  
+  <div class="table-responsive table-container">  
+    <table class="table">  
+      <thead>  
+        <tr>  
+          <th>Name</th>  
+          <th>Street</th>  
+          <th>City</th>  
+          <th>Zip</th>  
+          <th>Delete</th>
+          <th>Edit</th>
+        </tr>  
+      </thead>  
+      <tbody> 
+        <!-- <tr>
+<td>siddhu</td>
+
+<td>pune</td>
+<td>barshi</td>
+<td>3423</td> -->
+        <tr *ngFor="let add of addressArray;let j=index">  
+          <td >{{add.name}}</td>  
+          <td>{{add.street}}</td>  
+          <td>{{add.city}}</td>  
+          <td>{{add.zip}}</td>
+          <td><a class="btn btn danger" (click)="onDelete(j)">Delete</a></td>  
+          <td><a class="btn btn danger" (click)="onEdit(add,j)">Edit</a></td>  
+           <td>  
+          </td>   
+        </tr>  
+      </tbody>  
+    </table>  
+  </div>  
+</div>   
+
+</form>
